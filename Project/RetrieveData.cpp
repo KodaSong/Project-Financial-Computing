@@ -154,7 +154,7 @@ int GetData(vector<stock> & stockList, stock &spy)
 
 	// name of files  
 	const char outfilename[FILENAME_MAX] = "Output.txt";
-	const char resultfilename[FILENAME_MAX] = "Prices_SP500.txt";
+	const char resultfilename[FILENAME_MAX] = ".\\in_out\\Output_PricesSP500.txt";
 
     // declaration of an object CURL 
     CURL *handle;                   
@@ -364,7 +364,7 @@ int GetSPYData(stock& spy)
 	// name of files  
 	const char outfilename[FILENAME_MAX] = "OutputSPY.txt";
 	//const char resultfilename[FILENAME_MAX] = "Results.txt";
-	const char resultfilename[FILENAME_MAX] = "Prices_SPY.txt";
+	const char resultfilename[FILENAME_MAX] = ".\\in_out\\Output_PricesSPY.txt";
 
 	// declaration of an object CURL 
 	CURL* handle;

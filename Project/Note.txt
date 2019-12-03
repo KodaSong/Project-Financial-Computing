@@ -1,0 +1,27 @@
+To remind myself something
+
+File Problem!!!
+the dat
+
+Date Problem
+61 work days! -> Calculate day-30 and day30's date
+
+hard to count the calendar days! -> Select a huge range data
+ -> Let Announcement Day as center data -> choose the past 30 datapoints and next 30 datapoints
+
+
+Ticker Problem
+"BF/B" is not in Yahoo Finance -> change the ticker to "BF-B"
+"BRK/A"	-> "BRK-A" 
+
+Retrieve Data Problem
+1.When we do presentation, we need to start from retrieving!
+2. Company "BKR" June 05, 2019 has no data! How to solve it? -> Delete it for now!
+3. In File "1.csv", I replace "BKR" with "VZ"
+
+4. "BRK" -> Announcement Date is not a working day -> Delete it for now!
+5. "OXY" -> Announcement Date is not a working day -> Delete it for now!
+
+6. "CTVA" is listed at May 24, 2019 -> No data before -> Delete it
+7. "NLOK" is listed at Oct 31, 2019 -> No data before -> Delete it
+7. "PEAK" is listed at Oct 31, 2019 -> No data before -> Delete it

@@ -13,6 +13,24 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\ExcelDriver">
+      <UniqueIdentifier>{daae97a3-907e-49fe-8400-2d65c95a4946}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ExcelDriver">
+      <UniqueIdentifier>{3abc5221-96c1-444c-89a1-8aef1d1cf652}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GetData">
+      <UniqueIdentifier>{9efea255-2b20-41a2-9607-01945b6ed24e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GetData">
+      <UniqueIdentifier>{2e76b0a9-e187-4569-a18d-8f24f9bb102f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Calculations">
+      <UniqueIdentifier>{b1dc97c0-8180-4e3a-856a-b3abf6aff36f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Calculations">
+      <UniqueIdentifier>{be7c58c8-1d72-43e0-82c5-738a5f2f2a39}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -24,70 +42,70 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ChartStructure.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ExcelMechanisms.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Display.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GroupStocks.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ReadFile.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Repeat.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RetrieveData.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="stock.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="ChartStructure.hpp">
+      <Filter>Header Files\ExcelDriver</Filter>
     </ClInclude>
     <ClInclude Include="ExcelDriver.hpp">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\ExcelDriver</Filter>
+    </ClInclude>
+    <ClInclude Include="ExcelMechanisms.hpp">
+      <Filter>Header Files\ExcelDriver</Filter>
+    </ClInclude>
+    <ClInclude Include="ReadFile.h">
+      <Filter>Header Files\GetData</Filter>
+    </ClInclude>
+    <ClInclude Include="RetrieveData.h">
+      <Filter>Header Files\GetData</Filter>
+    </ClInclude>
+    <ClInclude Include="stock.h">
+      <Filter>Header Files\Calculations</Filter>
+    </ClInclude>
+    <ClInclude Include="GroupStocks.h">
+      <Filter>Header Files\Calculations</Filter>
+    </ClInclude>
+    <ClInclude Include="Repeat.h">
+      <Filter>Header Files\Calculations</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ExcelImports.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ExcelMechanisms.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ExceptionClasses\DatasimException.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="BitsAndPieces\StringConversions.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GroupStocks.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ReadFile.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Repeat.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RetrieveData.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="stock.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ExceptionClasses\DatasimException.cpp">
+      <Filter>Source Files\ExcelDriver</Filter>
+    </ClCompile>
     <ClCompile Include="ExcelDriver.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\ExcelDriver</Filter>
+    </ClCompile>
+    <ClCompile Include="ExcelImports.cpp">
+      <Filter>Source Files\ExcelDriver</Filter>
+    </ClCompile>
+    <ClCompile Include="ExcelMechanisms.cpp">
+      <Filter>Source Files\ExcelDriver</Filter>
+    </ClCompile>
+    <ClCompile Include="BitsAndPieces\StringConversions.cpp">
+      <Filter>Source Files\ExcelDriver</Filter>
+    </ClCompile>
+    <ClCompile Include="ReadFile.cpp">
+      <Filter>Source Files\GetData</Filter>
+    </ClCompile>
+    <ClCompile Include="RetrieveData.cpp">
+      <Filter>Source Files\GetData</Filter>
+    </ClCompile>
+    <ClCompile Include="GroupStocks.cpp">
+      <Filter>Source Files\Calculations</Filter>
+    </ClCompile>
+    <ClCompile Include="Repeat.cpp">
+      <Filter>Source Files\Calculations</Filter>
+    </ClCompile>
+    <ClCompile Include="stock.cpp">
+      <Filter>Source Files\Calculations</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

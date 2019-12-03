@@ -11,40 +11,6 @@
 #include <sstream> 
 #include <fstream>
 
-//void split_string(string& line, vector<string>& vec_date, vector<double>& vec_vol, vector<double>& vec_adj, 
-//	vector<double>& vec_close, vector<double>& vec_low, vector<double>& vec_high, vector<double>& vec_open)
-//{
-//	vec_date.push_back(line.substr(0, line.find_first_of(',')));
-//	vec_vol.push_back(stod(line.substr(line.find_last_of(',') + 1)));
-//	line.erase(line.find_last_of(','));
-//	vec_adj.push_back(stod(line.substr(line.find_last_of(',') + 1)));
-//	line.erase(line.find_last_of(','));
-//	vec_close.push_back(stod(line.substr(line.find_last_of(',') + 1)));
-//	line.erase(line.find_last_of(','));
-//	vec_low.push_back(stod(line.substr(line.find_last_of(',') + 1)));
-//	line.erase(line.find_last_of(','));
-//	vec_high.push_back(stod(line.substr(line.find_last_of(',') + 1)));
-//	line.erase(line.find_last_of(','));
-//	vec_open.push_back(stod(line.substr(line.find_last_of(',') + 1)));
-//	line.erase(line.find_last_of(','));
-//}
-
-//void price_push(stock* itr, int index1, int index2, vector<string>& vec_date, 
-//	vector<double>& vec_vol, vector<double>& vec_adj, vector<double>& vec_close, 
-//	vector<double>& vec_low, vector<double>& vec_high, vector<double>& vec_open)
-//{
-//	for (int i = index1; i < index2 + 1; i++)
-//	{
-//		itr->datetime.push_back(vec_date[i]);
-//		itr->volumn.push_back(vec_vol[i]);
-//		itr->adj_close.push_back(vec_adj[i]);
-//		itr->close.push_back(vec_close[i]);
-//		itr->low.push_back(vec_low[i]);
-//		itr->high.push_back(vec_high[i]);
-//		itr->open.push_back(vec_open[i]);
-//	}
-//}
-
 
 vector<stock> Get_EPS(string filename)
 {

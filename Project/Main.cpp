@@ -1,3 +1,10 @@
+/*
+ * @Author: Koda Song
+ * @Date: 2019-12-02 10:20:52
+ * @LastEditors: Koda Song
+ * @LastEditTime: 2019-12-03 12:04:46
+ * @Description: 
+ */
 // TestMatrixExcel.cpp
 //
 // Test output of a matrix in Excel. Here we 
@@ -44,7 +51,7 @@ int main()
 
 	// Read Bloomberg file and store tickers, annoucement day, eps information into stockList
 	cout << "Read data from file downloaded on Bloomberg:" << endl;
-	vector<stock> stockList = Get_EPS("SP_bbg.csv");
+	vector<stock> stockList = Get_EPS(".\\in_out\\SP_bbg.csv");
 	cout << endl;
 
 	//// Retrieve historical price data for SP500 from Yahoo Finance
@@ -54,7 +61,7 @@ int main()
 
 	// Risk Management: directly read stock price data from txt
 	cout << "Read stock price data from txt file:" << endl;
-	string filename = "Input_SP500.txt";
+	string filename = ".\\in_out\\Input_SP500.txt";
 	GetPriceData_txt(stockList, filename, spy);
 	cout << endl << endl;
 
@@ -112,7 +119,7 @@ int main()
 
 	// Show in file
 	ofstream fout;
-	fout.open("Tables.txt");
+	fout.open(".\\in_out\\Tables.txt");
 
 	fout << setiosflags(ios::fixed) << setprecision(3);
 	fout << "Beat Group:" << endl
