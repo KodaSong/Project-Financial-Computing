@@ -21,10 +21,10 @@ vector<stock> Get_EPS(string filename)
 	vector<stock> stockList;
 
 	getline(inFile, line);	// This is the head of the chart, "Ticker"  "Date"  "Period"  "Actual"  "Estimate"
-	cout << line << endl;
+	//cout << line << endl;
 	while (getline(inFile, line))	// getline is from <sstream>
 	{
-		cout << line << endl;
+		//cout << line << endl;
 
 		stock mystock;	// new an object to store the information of this stock
 
@@ -57,8 +57,8 @@ void GetPriceData_txt(vector<stock>& stockList, string filename, stock &spy)
 	getline(inFile, line);	// This is the head of the chart, "Ticker"  "Date"  "Period"  "Actual"  "Estimate"
 	while (itr != stockList.end())
 	{	
-		cout << itr->name << endl
-			 << line << endl;
+		//cout << itr->name << endl
+		//	 << line << endl;
 		
 		vector<string> vec_date;
 		vector<double> vec_vol, vec_adj, vec_close, vec_low, vec_high, vec_open;
@@ -66,13 +66,13 @@ void GetPriceData_txt(vector<stock>& stockList, string filename, stock &spy)
 		{
 			if (line.substr(line.find_last_of(',') + 1) != "Volume")
 			{
-				cout << line << endl;
+				//cout << line << endl;
 				split_string(line, vec_date, vec_vol, vec_adj, vec_close, vec_low, vec_high, vec_open);
 			}
 			else
 				break;
 		}
-		cout << "-------------------------------------------------------------------------" << endl;
+		
 		// Find the index of announcement date in vec_date
 		vector<string>::iterator itr_date;
 		itr_date = find(vec_date.begin(), vec_date.end(), itr->announcement_day);
@@ -105,3 +105,4 @@ void GetPriceData_txt(vector<stock>& stockList, string filename, stock &spy)
 	}
 
 }
+

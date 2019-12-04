@@ -1,14 +1,13 @@
-#pragma once
-#ifndef Repeat_h
-#define Repeat_h
-
 /*
  * @Author: Koda Song
  * @Date: 2019-11-29 15:40:02
  * @LastEditors: Koda Song
- * @LastEditTime: 2019-12-02 10:24:36
+ * @LastEditTime: 2019-12-04 00:52:44
  * @Description: 
  */
+#pragma once
+#ifndef Repeat_h
+#define Repeat_h
 
 #include "GroupStocks.h"
 #include <list>

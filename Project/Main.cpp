@@ -1,17 +1,11 @@
 /*
  * @Author: Koda Song
- * @Date: 2019-12-02 10:20:52
+ * @Date: 2019-11-29 10:20:52
  * @LastEditors: Koda Song
- * @LastEditTime: 2019-12-03 12:04:46
+ * @LastEditTime: 2019-12-04 00:50:33
  * @Description: 
  */
-// TestMatrixExcel.cpp
-//
-// Test output of a matrix in Excel. Here we 
-// use the Excel Driver object directly.
-//
-// (C) Datasim Education BV 2006
-//
+
 #include "stdafx.h"
 #include "BitsAndPieces\StringConversions.hpp"
 #include "ExcelDriver.hpp"
@@ -31,6 +25,8 @@
 #include <thread>
 #include <numeric>
 #include <iomanip>
+#include <cstdio>
+#include <time.h>
 
 #include "curl.h"
 #include "stock.h"
@@ -45,25 +41,49 @@ using namespace std;
 
 int main()
 {
+	/*// Delete files downloaded last time 
+	remove(".\\in_out\\Output_PricesSPY.txt");
+	remove(".\\in_out\\Output_PricesSP500.txt");*/
+
 	stock spy;
-	cout << "Retrieve historical price data for SPY from Yahoo Finance" << endl;
+	cout << "Start to retrieve historical price data for SPY from Yahoo Finance:" << endl;
 	GetSPYData(spy);
+	cout << "SPY data retrieved successfully!" << endl << endl;
 
 	// Read Bloomberg file and store tickers, annoucement day, eps information into stockList
 	cout << "Read data from file downloaded on Bloomberg:" << endl;
+	//vector<stock> stockList = Get_EPS(".\\in_out\\SP_bbg.csv");
 	vector<stock> stockList = Get_EPS(".\\in_out\\SP_bbg.csv");
-	cout << endl;
+	cout << "EPS File read successfully!" << endl << endl;
 
-	//// Retrieve historical price data for SP500 from Yahoo Finance
-	//cout << "Retrieve historical price data for all stocks." << endl;
-	//GetData(stockList, spy);
-	//cout << endl;
+	/*// retrieve historical price data for sp500 from yahoo finance and do calculations in the meantime
+	cout << "Start to retrieve historical price data for all stocks:" << endl;
+	clock_t start = clock();
+	GetData(stockList, spy);
+	clock_t ends = clock();
+	cout << "SP500 data retrieved successfully!" << endl;
+	double secs = (double)(ends - start) / CLOCKS_PER_SEC;
+	cout << "Running Time : " << secs / 60.0 << " minutes" << endl << endl;*/
+
+	/*// Only download data and store in file without any calculation -> Save time!
+	clock_t start = clock();
+	Download_Data(stockList);
+	clock_t ends = clock();
+	double secs = (double)(ends - start) / CLOCKS_PER_SEC;
+	cout << "Running Time : " << secs/60.0 << " minutes" << endl;
+
+	//	Read file and store stock's price information into "stockList"
+	string filename = ".\\in_out\\Output_PricesSP500.txt";
+	GetPriceData_txt(stockList, filename, spy);*/
 
 	// Risk Management: directly read stock price data from txt
 	cout << "Read stock price data from txt file:" << endl;
 	string filename = ".\\in_out\\Input_SP500.txt";
 	GetPriceData_txt(stockList, filename, spy);
 	cout << endl << endl;
+
+	map<string, stock> StockMap = stock_map(stockList);
+	
 
 	// Divide stocks into 3 groups
 	Group stock_group;

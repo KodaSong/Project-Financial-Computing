@@ -1,12 +1,11 @@
-#pragma once
-
 /*
  * @Author: Koda Song
  * @Date: 2019-11-28 23:03:15
  * @LastEditors: Koda Song
- * @LastEditTime: 2019-12-02 10:24:44
+ * @LastEditTime: 2019-12-04 00:52:27
  * @Description: 
  */
+#pragma once
 #include"stdafx.h"
 #include <iostream>
 #include <sstream> 
@@ -53,8 +52,8 @@ string getTimeinSeconds(string Time)
 	memset(time, 0, 100);	// memory set, void *memset(void *s, int ch, size_t n);
     if (ssTime >> std::get_time(&t, "%Y-%m-%dT%H:%M:%S"))	// use t to store ssTime
     {
-        cout << std::put_time(&t, "%c %Z") << "\n"	// %c -- date and time; %Z -- name of time zone
-                  << std::mktime(&t) << "\n";	// transfer t into seconds from 1970
+        //cout << std::put_time(&t, "%c %Z") << "\n"	// %c -- date and time; %Z -- name of time zone
+        //          << std::mktime(&t) << "\n";	// transfer t into seconds from 1970
 		sprintf (time, "%lld", mktime(&t));
 		return string(time);
     }
@@ -236,6 +235,8 @@ int GetData(vector<stock> & stockList, stock &spy)
 			if (itr == stockList.end())
 				break;
 
+			cout << "Retrieve " << itr->name << endl;
+
 			string day0 = itr->announcement_day + "T16:00:00";
 			string startTime = getStartinSeconds(day0);
 			string endTime = getEndinSeconds(day0);
@@ -278,12 +279,11 @@ int GetData(vector<stock> & stockList, stock &spy)
 			sData.str(data.memory);
 			string sDate, line;
 			getline(sData, line);
-			cout << itr->name << endl;
 
 			vector<string> vec_date;
 			vector<double> vec_vol, vec_adj, vec_close, vec_low, vec_high, vec_open;
 			while ( getline(sData, line) ) {	// let the string in "sData" transit to "line"
-				cout << line << endl;	// cout is for test; formal projects will delete
+				//cout << line << endl;	// cout is for test; formal projects will delete
 				sDate = line.substr(0, line.find_first_of(','));
 				vec_date.push_back(sDate);	
 
@@ -332,7 +332,7 @@ int GetData(vector<stock> & stockList, stock &spy)
 			itr->Calulate_AR();		// daily_return - spy_return
 
 			itr++;
-			cout << "-------------------------------------------------------------------------------" << endl;
+			//cout << "-------------------------------------------------------------------------------" << endl;
 		}
 		free(data.memory);
 		data.size= 0;
@@ -484,7 +484,7 @@ int GetSPYData(stock& spy)
 		string line;
 		getline(sData, line);
 		while (getline(sData, line)) {	// let the string in "sData" transit to "line"
-			cout << line << endl;
+			//cout << line << endl;
 			sDate = line.substr(0, line.find_first_of(','));
 			spy.datetime.push_back(sDate);
 
@@ -507,8 +507,173 @@ int GetSPYData(stock& spy)
 
 			spy.my_map[sDate] = adj;
 		}
-		cout << "-------------------------------------------------------------------------------" << endl;
+		//cout << "-------------------------------------------------------------------------------" << endl;
 
+		free(data.memory);
+		data.size = 0;
+	}
+	else
+	{
+		fprintf(stderr, "Curl init failed!\n");
+		return 1;
+	}
+
+	// cleanup since you've used curl_easy_init  
+	curl_easy_cleanup(handle);
+
+	// release resources acquired by curl_global_init() 
+	curl_global_cleanup();
+
+	return 0;
+}
+
+
+// Only download data from Yahoo Finance and store it in file without any calculation!
+int Download_Data(vector<stock>& stockList)
+{
+	vector<stock>::iterator itr = stockList.begin();
+
+	struct MemoryStruct data;
+	data.memory = NULL;
+	data.size = 0;
+
+	// file pointer to create file that store the data  
+	FILE* fp;
+
+	// name of files  
+	const char outfilename[FILENAME_MAX] = "Output.txt";
+	const char resultfilename[FILENAME_MAX] = ".\\in_out\\Output_PricesSP500.txt";
+
+	// declaration of an object CURL 
+	CURL* handle;
+
+	CURLcode result;
+
+	// set up the program environment that libcurl needs 
+	curl_global_init(CURL_GLOBAL_ALL);
+
+	// curl_easy_init() returns a CURL easy handle 
+	handle = curl_easy_init();
+
+	// if everything's all right with the easy handle... 
+	if (handle)
+	{
+		while (true)
+		{
+			string sCookies, sCrumb;	// crumb is what we don't need
+			if (sCookies.length() == 0 || sCrumb.length() == 0)
+			{
+				fp = fopen(outfilename, "w");
+				//curl_easy_setopt(handle, CURLOPT_URL, "https://finance.yahoo.com/quote/AMZN/history?p=AMZN");
+				curl_easy_setopt(handle, CURLOPT_URL, "https://finance.yahoo.com/quote/AMZN/history");
+				curl_easy_setopt(handle, CURLOPT_SSL_VERIFYPEER, 0);
+				curl_easy_setopt(handle, CURLOPT_SSL_VERIFYHOST, 0);
+				curl_easy_setopt(handle, CURLOPT_COOKIEJAR, "cookies.txt");
+				curl_easy_setopt(handle, CURLOPT_COOKIEFILE, "cookies.txt");
+
+				curl_easy_setopt(handle, CURLOPT_ENCODING, "");
+				curl_easy_setopt(handle, CURLOPT_WRITEFUNCTION, write_data);
+				curl_easy_setopt(handle, CURLOPT_WRITEDATA, fp);
+				result = curl_easy_perform(handle);
+				fclose(fp);
+
+				if (result != CURLE_OK)
+				{
+					// if errors have occurred, tell us what is wrong with result
+					fprintf(stderr, "curl_easy_perform() failed: %s\n", curl_easy_strerror(result));
+					return 1;
+				}
+
+				curl_easy_setopt(handle, CURLOPT_WRITEFUNCTION, write_data2);
+				curl_easy_setopt(handle, CURLOPT_WRITEDATA, (void*)& data);
+
+				// perform, then store the expected code in result
+				result = curl_easy_perform(handle);
+
+				if (result != CURLE_OK)
+				{
+					// if errors have occured, tell us what is wrong with result
+					fprintf(stderr, "curl_easy_perform() failed: %s\n", curl_easy_strerror(result));
+					return 1;
+				}
+
+				char cKey[] = "CrumbStore\":{\"crumb\":\"";
+				char* ptr1 = strstr(data.memory, cKey);
+				char* ptr2 = ptr1 + strlen(cKey);
+				char* ptr3 = strstr(ptr2, "\"}");
+				if (ptr3 != NULL)
+					* ptr3 = NULL;
+
+				sCrumb = ptr2;
+
+				fp = fopen("cookies.txt", "r");
+				char cCookies[100];
+				if (fp) {
+					while (fscanf(fp, "%s", cCookies) != EOF);
+					fclose(fp);
+				}
+				else
+					cerr << "cookies.txt does not exists" << endl;
+
+				sCookies = cCookies;
+				free(data.memory);
+				data.memory = NULL;
+				data.size = 0;
+			}
+
+			if (itr == stockList.end())
+				break;
+
+			cout << "Retrieve " << itr->name << endl;
+
+			string day0 = itr->announcement_day + "T16:00:00";
+			string startTime = getStartinSeconds(day0);
+			string endTime = getEndinSeconds(day0);
+			
+			string urlA = "https://query1.finance.yahoo.com/v7/finance/download/";
+			string symbol = itr->name;
+			string urlB = "?period1=";
+			string urlC = "&period2=";
+			string urlD = "&interval=1d&events=history&crumb=";
+			string url = urlA + symbol + urlB + startTime + urlC + endTime + urlD + sCrumb;
+			const char* cURL = url.c_str();
+			const char* cookies = sCookies.c_str();
+			curl_easy_setopt(handle, CURLOPT_COOKIE, cookies);   // Only needed for 1st stock
+			curl_easy_setopt(handle, CURLOPT_URL, cURL);
+			fp = fopen(resultfilename, "ab");
+			curl_easy_setopt(handle, CURLOPT_WRITEFUNCTION, write_data);
+			curl_easy_setopt(handle, CURLOPT_WRITEDATA, fp);
+			result = curl_easy_perform(handle);
+			fclose(fp);
+
+			// Check for errors */
+			if (result != CURLE_OK)
+			{
+				// if errors have occurred, tell us what is wrong with 'result'
+				fprintf(stderr, "curl_easy_perform() failed: %s\n", curl_easy_strerror(result));
+				return 1;
+			}
+			curl_easy_setopt(handle, CURLOPT_WRITEFUNCTION, write_data2);
+			curl_easy_setopt(handle, CURLOPT_WRITEDATA, (void*)& data);
+			result = curl_easy_perform(handle);
+
+			if (result != CURLE_OK)
+			{
+				// if errors have occurred, tell us what is wrong with result
+				fprintf(stderr, "curl_easy_perform() failed: %s\n", curl_easy_strerror(result));
+				return 1;
+			}
+
+			stringstream sData;
+			sData.str(data.memory);
+			string sDate, line;
+			getline(sData, line);
+
+			while (getline(sData, line));
+
+			itr++;
+			//cout << "-------------------------------------------------------------------------------" << endl;
+		}
 		free(data.memory);
 		data.size = 0;
 	}

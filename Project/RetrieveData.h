@@ -1,3 +1,10 @@
+/*
+ * @Author: Koda Song
+ * @Date: 2019-11-28 23:03:15
+ * @LastEditors: Koda Song
+ * @LastEditTime: 2019-12-04 00:53:05
+ * @Description: 
+ */
 #pragma once
 #ifndef RetrieveData_h
 #define RetrieveData_h
@@ -31,6 +38,9 @@ int GetData(vector<stock>& stocklist, stock& spy);
 // Get SPY's Price data from Yahoo Finance
 int GetSPYData(stock& spy);
 
+// Only download data from Yahoo Finance and store it in file without any calculation!
+int Download_Data(vector<stock>& stockList);
+
 time_t convert_string_to_time_t(const std::string& time_string);
 
 static int convert_time_t_to_string(std::string& strDateStr, const time_t& timeData)
@@ -52,5 +62,6 @@ static int convert_time_t_to_string(std::string& strDateStr, const time_t& timeD
 // Split line and push date and every price into vector
 void split_string(string& line, vector<string>& vec_date, vector<double>& vec_vol, vector<double>& vec_adj,
 	vector<double>& vec_close, vector<double>& vec_low, vector<double>& vec_high, vector<double>& vec_open);
+
 
 #endif // !RetrieveData_h

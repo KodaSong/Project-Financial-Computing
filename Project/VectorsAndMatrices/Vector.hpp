@@ -35,7 +35,7 @@ public:
 	friend Vector<V, I, S> operator + (const Vector<V, I, S>& v,const V& a);	// Add v to every element
 
 	template <class V, class I, class S>
-	friend Vector<V, I, S> operator + (const V& a,	const Vector<V, I, S>& v);
+	friend Vector<V, I, S> operator + (const V& a,	const Vector<V, I, S>& v);	// Add v to every element
 
 	template <class V, class I, class S>
 	friend Vector<V, I, S> operator - (const Vector<V, I, S>& v, const V& a);	// Subtract v from every element

@@ -1,14 +1,13 @@
+/*
+ * @Author: Koda Song
+ * @Date: 2019-11-29 14:58:51
+ * @LastEditors: Koda Song
+ * @LastEditTime: 2019-12-04 00:51:56
+ * @Description: 
+ */
 #pragma once
 #ifndef ReadFile_h
 #define ReadFile_h
-
-/*
- * @Author: Koda Song
- * @Date: 2019-12-01 03:33:04
- * @LastEditors: Koda Song
- * @LastEditTime: 2019-12-02 10:23:52
- * @Description: 
- */
 
 #include <vector>
 #include <string>
@@ -22,6 +21,8 @@ vector<stock> Get_EPS(string filename);
 
 //	Read data in txt file already downloaded from Yahoo Finance
 void GetPriceData_txt(vector<stock> &stockList, string filename, stock& spy);
+
+
 
 
 

@@ -1,14 +1,13 @@
-#pragma once
-#ifndef GroupStocks_h
-#define GroupStocks_h
-
 /*
  * @Author: Koda Song
  * @Date: 2019-11-29 10:03:13
  * @LastEditors: Koda Song
- * @LastEditTime: 2019-12-02 10:22:45
+ * @LastEditTime: 2019-12-04 00:51:17
  * @Description: 
  */
+#pragma once
+#ifndef GroupStocks_h
+#define GroupStocks_h
 
 #include <iostream>
 #include <cstdlib>
