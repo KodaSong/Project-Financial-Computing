@@ -29,7 +29,7 @@ class ExcelDriver
 {
 private:
 	// Private member data.
-	static ExcelDriver * singleton;
+	static ExcelDriver * singleton; // static enables that we can only have one instance of Excel at any one time
 	Excel::_ApplicationPtr xl;		// Pointer to Excel.
 	long curDataColumn;				// Current column of 'Chart Data'
 

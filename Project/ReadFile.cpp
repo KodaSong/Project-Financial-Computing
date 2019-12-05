@@ -57,8 +57,7 @@ void GetPriceData_txt(vector<stock>& stockList, string filename, stock &spy)
 	getline(inFile, line);	// This is the head of the chart, "Ticker"  "Date"  "Period"  "Actual"  "Estimate"
 	while (itr != stockList.end())
 	{	
-		//cout << itr->name << endl
-		//	 << line << endl;
+		cout << "Read " << itr->name << endl;
 		
 		vector<string> vec_date;
 		vector<double> vec_vol, vec_adj, vec_close, vec_low, vec_high, vec_open;
