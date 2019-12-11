@@ -12,31 +12,34 @@
 #include"stdafx.h"
 #include <string> 
 #include <stdio.h>
+#include <cstdio>
 #include <iostream>
 #include <sstream> 
 #include <fstream>
-#include <vector>
-#include <list>
-#include <locale>
 #include <iomanip>
-#include "curl.h"
+#include <vector>
+#include <locale>
 #include <locale>
 #include <locale.h>
-#include "stock.h"
-//#include "ExcelDriver\ExcelDriver.hpp"
 #include <algorithm>
 #include <thread>
 #include <numeric>
+
+#include "curl.h"
+#include "stock.h"
 #include "RetrieveData.h"
 
 using namespace std;
 using std::locale;
 
 // Get Price data from Yahoo Finance
-int GetData(vector<stock>& stocklist, stock& spy);
+int GetData(vector<stock>& stocklist, stock& spy, vector<stock>::iterator start, vector<stock>::iterator end);
 
 // Get SPY's Price data from Yahoo Finance
 int GetSPYData(stock& spy);
+
+// Use multi thread to run "GetData"
+void multi_thread(vector<stock>& stockList, stock& spy);
 
 // Only download data from Yahoo Finance and store it in file without any calculation!
 int Download_Data(vector<stock>& stockList);

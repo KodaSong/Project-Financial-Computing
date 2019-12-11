@@ -79,28 +79,29 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <None Include="ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="ChartStructure.hpp" />
     <ClInclude Include="Display.h" />
     <ClInclude Include="ExcelDriver.hpp" />
     <ClInclude Include="ExcelMechanisms.hpp" />
+    <ClInclude Include="gnuplot.h" />
     <ClInclude Include="GroupStocks.h" />
+    <ClInclude Include="Operator.h" />
     <ClInclude Include="ReadFile.h" />
     <ClInclude Include="Repeat.h" />
     <ClInclude Include="RetrieveData.h" />
     <ClInclude Include="stdafx.h" />
-    <ClInclude Include="stock.h" />
+    <ClInclude Include="Stock.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BitsAndPieces\StringConversions.cpp" />
+    <ClCompile Include="Display.cpp" />
     <ClCompile Include="ExcelDriver.cpp" />
     <ClCompile Include="ExcelImports.cpp" />
     <ClCompile Include="ExcelMechanisms.cpp" />
     <ClCompile Include="ExceptionClasses\DatasimException.cpp" />
     <ClCompile Include="GroupStocks.cpp" />
+    <ClCompile Include="Operator.cpp" />
     <ClCompile Include="ReadFile.cpp" />
     <ClCompile Include="Repeat.cpp" />
     <ClCompile Include="RetrieveData.cpp" />
@@ -108,8 +109,8 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="stock.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Stock.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

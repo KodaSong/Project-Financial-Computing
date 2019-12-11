@@ -10,8 +10,9 @@
 #include <iostream>
 #include <sstream> 
 #include <fstream>
+#include <cmath>
 
-
+// Read Bloomberg csv file
 vector<stock> Get_EPS(string filename)
 {
 	// read csv
@@ -34,7 +35,7 @@ vector<stock> Get_EPS(string filename)
 		mystock.EPS_Actual = stod(line.substr(line.find_last_of(',') + 1));
 		line.erase(line.find_last_of(','));
 
-		mystock.surprise = (mystock.EPS_Actual - mystock.EPS_Estimate) / mystock.EPS_Estimate;
+		mystock.surprise = (mystock.EPS_Actual - mystock.EPS_Estimate) / abs(mystock.EPS_Estimate);
 
 		line.erase(line.find_last_of(','));		// We don't need "Period", delete
 
@@ -47,6 +48,7 @@ vector<stock> Get_EPS(string filename)
 	return stockList;
 }
 
+// Risk Management when retrieving data is banned by Yahoo Finance
 void GetPriceData_txt(vector<stock>& stockList, string filename, stock &spy)
 {
 	// transit "filename" into inFile

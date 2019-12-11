@@ -16,10 +16,11 @@
 
 /*  Get ticker list, announcement date, eps information from file (Bloomberg)
 	filename could be file in current working space -> "Input_SP500.txt"
-	filename could be file in relative or absolute working space -> ".\\Data\\Input_SP500.txt" */
+	filename could also be file in relative or absolute working space -> ".\\in_out\\Input_SP500.txt" */
 vector<stock> Get_EPS(string filename);
 
-//	Read data in txt file already downloaded from Yahoo Finance
+// Risk Management
+// Read data in txt file already downloaded from Yahoo Finance
 void GetPriceData_txt(vector<stock> &stockList, string filename, stock& spy);
 
 

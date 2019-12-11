@@ -1,0 +1,89 @@
+﻿'Project.exe' (Win32): Loaded 'D:\Project\Project\Debug\Project.exe'. Symbols loaded.
+'Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\ntdll.dll'. 
+'Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\kernel32.dll'. 
+'Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\KernelBase.dll'. 
+'Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\ole32.dll'. 
+'Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\combase.dll'. 
+'Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\ucrtbase.dll'. 
+'Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\rpcrt4.dll'. 
+'Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\sspicli.dll'. 
+'Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\cryptbase.dll'. 
+'Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\bcryptprimitives.dll'. 
+'Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\sechost.dll'. 
+'Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\advapi32.dll'. 
+'Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\msvcrt.dll'. 
+'Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\gdi32.dll'. 
+'Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\win32u.dll'. 
+'Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\gdi32full.dll'. 
+'Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\msvcp_win.dll'. 
+'Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\user32.dll'. 
+'Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\oleaut32.dll'. 
+'Project.exe' (Win32): Loaded 'D:\Project\Project\Debug\curllib.dll'. Module was built without symbols.
+'Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\ws2_32.dll'. 
+'Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\msvcp140d.dll'. 
+'Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\vcruntime140d.dll'. 
+'Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\ucrtbased.dll'. 
+'Project.exe' (Win32): Loaded 'D:\Project\Project\Debug\ssleay32.dll'. Module was built without symbols.
+'Project.exe' (Win32): Loaded 'D:\Project\Project\Debug\libeay32.dll'. Module was built without symbols.
+'Project.exe' (Win32): Unloaded 'D:\Project\Project\Debug\libeay32.dll'
+'Project.exe' (Win32): Loaded 'D:\Project\Project\Debug\openldap.dll'. Module was built without symbols.
+'Project.exe' (Win32): Unloaded 'D:\Project\Project\Debug\openldap.dll'
+'Project.exe' (Win32): Loaded 'C:\Windows\WinSxS\x86_microsoft.vc90.crt_1fc8b3b9a1e18e3b_9.0.30729.9619_none_508d9c7abcbd32b6\msvcr90.dll'. 
+'Project.exe' (Win32): Loaded 'D:\Project\Project\Debug\libeay32.dll'. Module was built without symbols.
+'Project.exe' (Win32): Loaded 'D:\Project\Project\Debug\openldap.dll'. Module was built without symbols.
+'Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\wsock32.dll'. 
+'Project.exe' (Win32): Loaded 'D:\Project\Project\Debug\libsasl.dll'. 
+'Project.exe' (Win32): Unloaded 'D:\Project\Project\Debug\libsasl.dll'
+'Project.exe' (Win32): Loaded 'D:\Project\Project\Debug\libsasl.dll'. 
+'Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\imm32.dll'. 
+The thread 0x4f84 has exited with code 0 (0x0).
+'Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\mswsock.dll'. 
+'Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\NapiNSP.dll'. 
+'Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\pnrpnsp.dll'. 
+'Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\dnsapi.dll'. 
+'Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\nsi.dll'. 
+'Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\IPHLPAPI.DLL'. 
+'Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\winrnr.dll'. 
+'Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\nlaapi.dll'. 
+'Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\wshbth.dll'. 
+'Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\FWPUCLNT.DLL'. 
+'Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\bcrypt.dll'. 
+'Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\rasadhlp.dll'. 
+The thread 0x5718 has exited with code 0 (0x0).
+'Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\netapi32.dll'. 
+'Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\netutils.dll'. 
+'Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\wkscli.dll'. 
+'Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\srvcli.dll'. 
+'Project.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\netutils.dll'
+'Project.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\wkscli.dll'
+'Project.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\srvcli.dll'
+'Project.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\netapi32.dll'
+'Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\cryptsp.dll'. 
+'Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\rsaenh.dll'. 
+'Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\netapi32.dll'. 
+'Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\netutils.dll'. 
+'Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\wkscli.dll'. 
+'Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\srvcli.dll'. 
+'Project.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\netutils.dll'
+'Project.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\wkscli.dll'
+'Project.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\srvcli.dll'
+'Project.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\netapi32.dll'
+The thread 0x3f44 has exited with code 0 (0x0).
+The thread 0x2480 has exited with code 0 (0x0).
+'Project.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\NapiNSP.dll'
+'Project.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\pnrpnsp.dll'
+'Project.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\winrnr.dll'
+'Project.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\nlaapi.dll'
+'Project.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\wshbth.dll'
+'Project.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\FWPUCLNT.DLL'
+'Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\kernel.appcore.dll'. 
+'Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\uxtheme.dll'. 
+'Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\clbcatq.dll'. 
+'Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\coml2.dll'. 
+'Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\sxs.dll'. 
+The thread 0x8fc has exited with code 0 (0x0).
+The thread 0x4c50 has exited with code 0 (0x0).
+The thread 0x5180 has exited with code 0 (0x0).
+The thread 0x3fd8 has exited with code 0 (0x0).
+The thread 0xfd0 has exited with code 0 (0x0).
+The program '[17972] Project.exe' has exited with code 0 (0x0).

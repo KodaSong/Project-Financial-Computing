@@ -6,71 +6,156 @@
  * @Description: 
  */
 #include "stdafx.h"
-#include "Repeat.h"
 #include <cmath>
+#include "Repeat.h"
+#include "Display.h"
 
-void Repeat30::Mean()
+void Repeat30::Calculation()
 {
-	int days = 60;
-	vector<double> vec1(days), vec2(days), vec3(days);
-	for (int i = 0; i < 30; i++)	// Repeat 30 times
-	{
-		Group samplegroup = SampleStocks(group, i);	// generate sample groups 30*3
-		Cal_C_AAR(samplegroup);		// generate CAAR(value)
+	// Repeat 30 times
+	for (int i = 0; i < 30; i++) {
+		Group samplegroup = SampleStocks(group, i);	// Generate sample groups 30*3
+		Cal_AAR(samplegroup);		// Calculate AAR
+		Cal_CAAR(samplegroup);		// Calculate CAAR
 
-		// Calculate Expected Value of CAAR first
-		Beat_Expected_CAAR = (i / (i + 1.0)) * Beat_Expected_CAAR + samplegroup.Beat_CAAR / (i + 1.0);
-		Meet_Expected_CAAR = (i / (i + 1.0)) * Meet_Expected_CAAR + samplegroup.Meet_CAAR / (i + 1.0);
-		Miss_Expected_CAAR = (i / (i + 1.0)) * Miss_Expected_CAAR + samplegroup.Miss_CAAR / (i + 1.0);
-
-		// Calculate sum of AAR at each day
-		for (int j = 0; j < days; j++)
-		{
-			vec1[j] += samplegroup.Beat_AAR[j];
-			vec2[j] += samplegroup.Meet_AAR[j];
-			vec3[j] += samplegroup.Miss_AAR[j];
-		}
+		M_Beat_AAR.push_back(samplegroup.Beat_AAR);	// Use Matrix ( 30*60 ) to store each time's AAR
+		M_Meet_AAR.push_back(samplegroup.Meet_AAR);
+		M_Miss_AAR.push_back(samplegroup.Miss_AAR);
+		M_Beat_CAAR.push_back(samplegroup.Beat_CAAR);
+		M_Meet_CAAR.push_back(samplegroup.Meet_CAAR);
+		M_Miss_CAAR.push_back(samplegroup.Miss_CAAR);
 	}
 
-	for (int d = 0; d < days; d++)
-	{	// Average Value for each day
-		Beat_Expected_AAR.push_back(vec1[d]/30);	
-		Meet_Expected_AAR.push_back(vec2[d] / 30);
-		Miss_Expected_AAR.push_back(vec3[d] / 30);
-	}		
+	int days = 60;
+	Vector_ vec1(days), vec2(days), vec3(days), vec4(days), vec5(days), vec6(days);	// For AAR
+	Vector_ vec1_(days), vec2_(days), vec3_(days), vec4_(days), vec5_(days), vec6_(days);	// For CAAR
+	
+	// Calculate Mean -> Sum the rows of Matrix (30*60) -> Vector (1*60)
+	for (int i = 0; i < 30; i++) {
+		vec1 += M_Beat_AAR[i];	vec2 += M_Meet_AAR[i];	 vec3 += M_Miss_AAR[i];
+		vec1_ += M_Beat_CAAR[i];	vec2_ += M_Meet_CAAR[i];	 vec3_ += M_Miss_CAAR[i];
+	}
+	// Average these vectors to get mean vector
+	Beat_Expected_AAR = vec1/30.0;	Meet_Expected_AAR = vec2/30.0;	Miss_Expected_AAR = vec3/30.0;
+	Beat_Expected_CAAR = vec1_/30.0;	Meet_Expected_CAAR = vec2_/30.0;	Miss_Expected_CAAR = vec3_/30.0;
 
+	// Calculate Std -> Sum of (Each row of Matrix - Expected Vector)^2
+	for (int i = 0; i < 30; i++) {
+		vec4 += sqrr(M_Beat_AAR[i] - Beat_Expected_AAR);	vec5 += sqrr(M_Meet_AAR[i] - Meet_Expected_AAR);	vec6 += sqrr(M_Miss_AAR[i] - Miss_Expected_AAR);
+		vec4_ += sqrr(M_Beat_CAAR[i] - Beat_Expected_CAAR);	vec5_ += sqrr(M_Meet_CAAR[i] - Meet_Expected_CAAR);	vec6_ += sqrr(M_Miss_CAAR[i] - Miss_Expected_CAAR);
+	}
+	// Average these vectors to get SAMPLE standard deviation ( should divided by (n-1) )
+	Beat_std_AAR = sqrt(vec4 / 29.0);	Meet_std_AAR = sqrt(vec5 / 29.0);	Miss_std_AAR = sqrt(vec6 / 29.0);
+	Beat_std_CAAR = sqrt(vec4_ / 29.0);	Meet_std_CAAR = sqrt(vec5_ / 29.0);	Miss_std_CAAR = sqrt(vec6_ / 29.0);
 }
 
-void Repeat30::Std()
+void Repeat30::PrintGroupInfo(int& groupname, int& valuename)
 {
-	int days = 60;
-	double val1 = 0.0, val2 = 0.0, val3 = 0.0;
-	vector<double> vec1(days), vec2(days), vec3(days);
-	for (int i = 0; i < 30; i++)	// Repeat 30 times
+	if (groupname == 1)
 	{
-		Group samplegroup = SampleStocks(group, i);	// The seed is the same as Mean(), so the series should be totally same
-		Cal_C_AAR(samplegroup);		// generate AAR(vector) and CAAR(value)
-
-		// Calculate std of CAAR first
-		val1 = (i / (i + 1.0)) * val1 + pow( samplegroup.Beat_CAAR - Beat_Expected_CAAR, 2.0 ) / (i + 1.0);
-		val2 = (i / (i + 1.0)) * val2 + pow( samplegroup.Meet_CAAR - Meet_Expected_CAAR, 2.0 ) / (i + 1.0);
-		val3 = (i / (i + 1.0)) * val3 + pow( samplegroup.Miss_CAAR - Miss_Expected_CAAR, 2.0 ) / (i + 1.0);
-
-		// Calculate std of AAR
-		for (int j = 0; j < days; j++)
+		switch (valuename)
 		{
-			vec1[j] += pow( samplegroup.Beat_AAR[j] - Beat_Expected_AAR[j], 2.0 );
-			vec2[j] += pow( samplegroup.Meet_AAR[j] - Meet_Expected_AAR[j], 2.0 );
-			vec3[j] += pow( samplegroup.Miss_AAR[j] - Miss_Expected_AAR[j], 2.0 );
+		case 1:
+		{
+			cout << "Expected AAR for Beat Group is:" << endl;
+			display_vec(Beat_Expected_AAR);
+			break;
+		}
+		case 2:
+		{
+			cout << "Standard deviation of AAR for Beat Group is:" << endl;
+			display_vec(Beat_std_AAR);
+			break;
+		}
+		case 3:
+		{
+			cout << "Expected CAAR for Beat Group is:" << endl;
+			display_vec(Beat_Expected_CAAR);
+			break;
+		}
+		case 4:
+		{
+			cout << "Standard deviation of CAAR for Beat Group is:" << endl;
+			display_vec(Beat_std_CAAR);
+			break;
+		}
+		default:
+		{
+			cout << "Invalid input. Please input again." << endl;
+		}
 		}
 	}
-
-	Beat_std_CAAR = sqrt(val1);		Meet_std_CAAR = sqrt(val2);	Miss_std_CAAR = sqrt(val3);
-
-	for (int d = 0; d < days; d++)
+	else if (groupname == 2)
 	{
-		Beat_std_AAR.push_back(sqrt(vec1[d] / 30.0));
-		Meet_std_AAR.push_back(sqrt(vec2[d] / 30.0));
-		Miss_std_AAR.push_back(sqrt(vec3[d] / 30.0));
+		switch (valuename)
+		{
+		case 1:
+		{
+			cout << "Expected AAR for Meet Group is:" << endl;
+			display_vec(Meet_Expected_AAR);
+			break;
+		}
+		case 2:
+		{
+			cout << "Standard deviation of AAR for Meet Group is:" << endl;
+			display_vec(Meet_std_AAR);
+			break;
+		}
+		case 3:
+		{
+			cout << "Expected CAAR for Meet Group is:" << endl;
+			display_vec(Meet_Expected_CAAR);
+			break;
+		}
+		case 4:
+		{
+			cout << "Standard deviation of CAAR for Meet Group is:" << endl;
+			display_vec(Meet_std_CAAR);
+			break;
+		}
+		default:
+		{
+			cout << "Invalid input. Please input again." << endl;
+		}
+		}
+	}
+	else if (groupname == 3)
+	{
+		switch (valuename)
+		{
+		case 1:
+		{
+			cout << "Expected AAR for Miss Group is:" << endl;
+			display_vec(Miss_Expected_AAR);
+			break;
+		}
+		case 2:
+		{
+			cout << "Standard deviation of AAR for Miss Group is:" << endl;
+			display_vec(Miss_std_AAR);
+			break;
+		}
+		case 3:
+		{
+			cout << "Expected CAAR for Miss Group is:" << endl;
+			display_vec(Miss_Expected_CAAR);
+			break;
+		}
+		case 4:
+		{
+			cout << "Standard deviation of CAAR for Miss Group is:" << endl;
+			display_vec(Miss_std_CAAR);
+			break;
+		}
+		default:
+		{
+			cout << "Invalid input. Please input again." << endl;
+		}
+		}
+	}
+	else
+	{
+		cout << "Invalid input. Please input again." << endl;
 	}
 }
+

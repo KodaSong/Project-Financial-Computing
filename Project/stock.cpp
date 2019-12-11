@@ -7,7 +7,9 @@
  */
 
 #include "stdafx.h"
-#include "stock.h"
+#include "Stock.h"
+#include "Display.h"
+
 
 void stock::GetSPYADJ(stock& spy)
 {
@@ -21,9 +23,27 @@ void stock::GetSPYADJ(stock& spy)
 
 void stock::Calulate_AR()
 {
-	int days = daily_return.size();
-	for (int i = 0; i < days; i++)
-		AR.push_back(daily_return[i] - spy_return[i]);
+	AR = daily_return - spy_return;
+}
+
+void stock::PrintAllInfo()
+{
+	cout << "name: " << name << endl;
+	cout << endl;
+	cout << "Announcement Date: " << announcement_day << endl;
+	cout << endl;
+	cout << "Estimated EPS: " << EPS_Estimate << endl;
+	cout << endl;
+	cout << "Actual EPS: " << EPS_Actual << endl;
+	cout << endl;
+	cout << "surprise: " << surprise << endl;
+	cout << endl;
+
+	cout << "adj_close prices: " << endl;
+	display_vec2(adj_close);
+
+	cout << "daily returns: " << endl;
+	display_vec(daily_return);
 }
 
 vector<double> Calculate_Return(vector<double>& price)
@@ -39,33 +59,6 @@ vector<double> Calculate_Return(vector<double>& price)
 		vec.push_back(r);
 	}
 	return vec;
-}
-
-vector<double> Calculate_AAR(vector<stock>& stockList)
-{
-	int stock_nums = stockList.size();
-	int days = stockList[0].daily_return.size();
-	vector<double> AAR(days);
-	for (int i = 0; i < days; i++)
-	{
-		double res = 0.0;
-		for (int j = 0; j < stock_nums; j++)
-		{
-			res += stockList[j].daily_return[i];		// the ith daily return of the jth stock
-		}
-		AAR[i] = res / stock_nums;	// Average Value for the ith day
-	}
-	return AAR;
-}
-
-double Calculate_CAAR(vector<stock>& stockList)
-{
-	vector<double> AAR = Calculate_AAR(stockList);
-	int days = AAR.size();
-	double result = 0.0;
-	for (int i = 0; i < days; i++)
-		result += AAR[i];
-	return result;
 }
 
 map<string, stock> stock_map(vector<stock>& stockList)
