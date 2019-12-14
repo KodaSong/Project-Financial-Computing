@@ -1,9 +1,9 @@
 /*
  * @Author: Koda Song
  * @Date: 2019-11-29 10:03:13
- * @LastEditors: Koda Song
- * @LastEditTime: 2019-12-04 00:51:17
- * @Description: 
+ * @LastEditors: Suki
+ * @LastEditTime: 2019-12-11 12:46:55
+ * @Description: Divide SP500 companies into 3 groups based on EPS surprise
  */
 #pragma once
 #ifndef GroupStocks_h
@@ -45,7 +45,7 @@ void sortMapByValue(map<string, double>& tMap, vector<pair<string, double> >& tV
 void group_stocks(vector<stock>& stockList, Group &stockgroup);
 
 // Return an object with 3 groups -> Each randomly select 30 stocks
-Group SampleStocks(Group& group, int n);
+Group SampleStocks(Group& group);
 
 // Calculate each group's AAR from day-30 to day30
 void Cal_AAR(Group& samplegroup);

@@ -1,3 +1,11 @@
+/*
+ * @Author: Suki
+ * @Date: 2019-12-08 10:09:43
+ * @LastEditors: Suki
+ * @LastEditTime: 2019-12-11 12:47:38
+ * @Description: 
+ */
+
 #include "stdafx.h"
 #include "Operator.h"
 

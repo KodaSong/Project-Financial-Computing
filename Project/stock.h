@@ -3,7 +3,7 @@
  * @Date: 2019-11-28 23:03:15
  * @LastEditors: Koda Song
  * @LastEditTime: 2019-12-04 00:53:34
- * @Description: 
+ * @Description: Create a class stock to store SP500 companies information
  */
 #pragma once
 #include "stdafx.h"

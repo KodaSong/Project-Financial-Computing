@@ -2,8 +2,8 @@
  * @Author: Koda Song
  * @Date: 2019-11-29 14:58:51
  * @LastEditors: Koda Song
- * @LastEditTime: 2019-12-04 00:51:56
- * @Description: 
+ * @LastEditTime: 2019-12-11 12:48:28
+ * @Description: Read local file and store in C++
  */
 #pragma once
 #ifndef ReadFile_h

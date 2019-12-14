@@ -1,3 +1,11 @@
+/*
+ * @Author: Koda Song
+ * @Date: 2019-12-10 10:35:02
+ * @LastEditors: Laureline
+ * @LastEditTime: 2019-12-11 12:45:47
+ * @Description: 
+ */
+
 #include "stdafx.h"
 #include "Display.h"
 
@@ -37,7 +45,7 @@ void display_in_file(ofstream& fout, vector<double>& vec)
 	for (int i = 0; i <= nrow - 1; i++)
 	{
 		for (int j = 0; j <= ncol - 1; j++)
-			fout << setw(8) << vec[10 * i + j] * 100.0 << "%";
+			fout << setw(8) << vec[10 * i + j] << "%";
 		fout << endl;
 	}
 

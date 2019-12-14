@@ -1,8 +1,8 @@
 /*
  * @Author: Koda Song
  * @Date: 2019-11-29 14:58:51
- * @LastEditors: Koda Song
- * @LastEditTime: 2019-12-04 00:51:30
+ * @LastEditors: Suki
+ * @LastEditTime: 2019-12-11 12:46:41
  * @Description: 
  */
 
@@ -60,13 +60,13 @@ void group_stocks(vector<stock>& stockList, Group &stockgroup)
 
 }
 
-Group SampleStocks(Group &group, int n)
+Group SampleStocks(Group &group)
 {
 	Group samplegroup;		// Initialization
 
 	// group beat
 	int size_beat = group.Beat.size();
-	srand(time(NULL)+n);	// "+n" -> Since calculation is fast, sometimes time(NULL) are almost same in Bootstrapping
+	//srand(time(NULL)+n);	// "+n" -> Since calculation is fast, sometimes time(NULL) are almost same in Bootstrapping
 	for (int i = 0; i < 30; i++)
 	{
 		int rand_num = rand() % size_beat;	// '%' -> generate a random number between 0 and size-1
@@ -75,7 +75,7 @@ Group SampleStocks(Group &group, int n)
 
 	// group match
 	int size_meet = group.Meet.size();
-	srand(time(NULL)+n);		// set a seed
+	//srand(time(NULL)+n);		// set a seed
 	for (int i = 0; i < 30; i++)
 	{
 		int rand_num = rand() % size_meet;	// generate a random number between 0 and size-1
@@ -84,7 +84,7 @@ Group SampleStocks(Group &group, int n)
 
 	// group miss
 	int size_miss = group.Miss.size();
-	srand(time(NULL)+n);		// set a seed
+	//srand(time(NULL)+n);		// set a seed
 	for (int i = 0; i < 30; i++)
 	{
 		int rand_num = rand() % size_miss;	// generate a random number between 0 and size-1

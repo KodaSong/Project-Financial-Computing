@@ -1,3 +1,11 @@
+/*
+ * @Author: Suki
+ * @Date: 2019-12-08 10:06:48
+ * @LastEditors: Suki
+ * @LastEditTime: 2019-12-11 12:47:49
+ * @Description: Operator Overloading
+ */
+
 #pragma once
 #ifndef Operator_h
 #define Operator_h

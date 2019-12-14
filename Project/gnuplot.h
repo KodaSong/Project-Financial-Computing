@@ -1,3 +1,11 @@
+/*
+ * @Author: Laureline
+ * @Date: 2019-12-05 16:49:52
+ * @LastEditors: Laureline
+ * @LastEditTime: 2019-12-11 12:46:18
+ * @Description: Use gnuplot to visualize time series
+ */
+
 #pragma once
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>

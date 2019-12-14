@@ -1,9 +1,9 @@
 /*
  * @Author: Koda Song
  * @Date: 2019-11-29 14:58:51
- * @LastEditors: Koda Song
- * @LastEditTime: 2019-12-04 00:49:55
- * @Description: 
+ * @LastEditors: Laureline
+ * @LastEditTime: 2019-12-11 12:44:45
+ * @Description: Display vector beautifully into console
  */
 
 #pragma once

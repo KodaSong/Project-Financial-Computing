@@ -1,8 +1,8 @@
 /*
  * @Author: Koda Song
  * @Date: 2019-11-29 10:20:52
- * @LastEditors: Koda Song
- * @LastEditTime: 2019-12-04 00:50:33
+ * @LastEditors: Laureline
+ * @LastEditTime: 2019-12-11 12:47:29
  * @Description: 
  */
 
@@ -28,6 +28,7 @@ using namespace std;
 
 int main()
 {
+	srand(time(NULL));
 	/*// Delete files downloaded last time 
 	remove(".\\in_out\\Output_PricesSPY.txt");
 	remove(".\\in_out\\Output_PricesSP500.txt");*/
@@ -48,9 +49,9 @@ int main()
 	double secs = (double)(ends - start) / CLOCKS_PER_SEC;	// Count time
 	cout << "Running Time : " << secs / 60.0 << " minutes" << endl << endl;
 	
-	/*// Risk Management: directly read stock price data from txt
-	string filename = ".\\in_out\\Input_SP500.txt";
-	GetPriceData_txt(stockList, filename, spy);*/
+	//// Risk Management: directly read stock price data from local txt files
+	//string filename = ".\\in_out\\Input_SP500.txt";
+	//GetPriceData_txt(stockList, filename, spy);
 
 	// Create a stockmap, for menu!
 	map<string, stock> StockMap = stock_map(stockList);
@@ -244,7 +245,7 @@ int main()
 				}
 				default:
 				{
-					cout << "Invalid input. Please input again." << endl;
+					cout << "Invalid input. Please input again." << endl << endl;
 				}
 				}
 				cout << "Please enter 1, 2, 0 to select your option:" << endl;

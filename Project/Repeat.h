@@ -2,8 +2,8 @@
  * @Author: Koda Song
  * @Date: 2019-11-29 15:40:02
  * @LastEditors: Koda Song
- * @LastEditTime: 2019-12-04 00:52:44
- * @Description: 
+ * @LastEditTime: 2019-12-11 12:48:51
+ * @Description: Bootstrapping
  */
 #pragma once
 #ifndef Repeat_h

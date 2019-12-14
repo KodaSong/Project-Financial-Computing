@@ -1,8 +1,8 @@
 /*
  * @Author: Koda Song
  * @Date: 2019-11-29 16:25:45
- * @LastEditors: Koda Song
- * @LastEditTime: 2019-12-02 10:24:09
+ * @LastEditors: Suki
+ * @LastEditTime: 2019-12-11 12:48:41
  * @Description: 
  */
 #include "stdafx.h"
@@ -14,7 +14,7 @@ void Repeat30::Calculation()
 {
 	// Repeat 30 times
 	for (int i = 0; i < 30; i++) {
-		Group samplegroup = SampleStocks(group, i);	// Generate sample groups 30*3
+		Group samplegroup = SampleStocks(group);	// Generate sample groups 30*3
 		Cal_AAR(samplegroup);		// Calculate AAR
 		Cal_CAAR(samplegroup);		// Calculate CAAR
 
